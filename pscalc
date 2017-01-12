@@ -40,4 +40,4 @@ die "$0 [size_of_alphabet] [password_size]\n" if (@ARGV < 2);
 my $alphabet_size = $ARGV[0]; # Size of alphabet
 my $n = $ARGV[1]; # Number of characters in password
 my $res = log($alphabet_size)/log(2) * $n;
-print("$res\n");
+printf("%.2f\n", $res);
