@@ -1,0 +1,43 @@
+#!/usr/bin/env perl
+# pscalc --- Determine bitsize of a password
+#
+# Author: Haden Pike <haden.pike@gmail.com>
+#
+# Copyright (c) 2017 Haden Pike
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# The bitsize of a password is determined by:
+# log(alphabet_size)/log(2)
+# where alphabet_size is equal to the sum of the allowed characters
+# (95 for lowercase, uppercase, digits, and the 33 special characters),
+# and n is the length of the password.
+# Thanks to Steve Gibson
+# https://www.grc.com/
+# for pointing this formula out on the Security Now podcast
+# https://twit.tv/sn.
+
+use strict;
+use warnings;
+
+die "$0 [size_of_alphabet] [password_size]\n" if (@ARGV < 2);
+my $alphabet_size = $ARGV[0]; # Size of alphabet
+my $n = $ARGV[1]; # Number of characters in password
+my $res = log($alphabet_size)/log(2) * $n;
+print("$res\n");
