@@ -6,4 +6,4 @@ and n is the length of the password.
 Thanks to Steve Gibson
 <https://www.grc.com/>
 for pointing this formula out on the Security Now podcast
-<https://twit.tv/sn.>
+<https://twit.tv/sn>.
