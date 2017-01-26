@@ -28,8 +28,6 @@ use warnings;
 
 =pod
 
-=NAME
-
 pscalc --- Determine entropy of a password
 
 =head1 SYNOPSIS
@@ -58,7 +56,7 @@ attempts to try all possibilities. Consider the speed of computers and increase 
 =head1 REFERENCE
 
 Thanks to Steve Gibson
-L<https://www.grc.com/
+L<https://www.grc.com/>
 for pointing this formula out on the Security Now podcast
 L<https://twit.tv/sn>.
 
