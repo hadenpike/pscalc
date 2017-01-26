@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# pscalc --- Determine bitsize of a password
+# pscalc --- Determine entropy of a password
 #
 # Author: Haden Pike <haden.pike@gmail.com>
 #
@@ -23,18 +23,46 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# The bitsize of a password is determined by:
-# log(alphabet_size)/log(2)
-# where alphabet_size is equal to the sum of the allowed characters
-# (95 for lowercase, uppercase, digits, and the 33 special characters),
-# and n is the length of the password.
-# Thanks to Steve Gibson
-# https://www.grc.com/
-# for pointing this formula out on the Security Now podcast
-# https://twit.tv/sn.
-
-use strict;
+#use strict;
 use warnings;
+
+=pod
+
+=NAME
+
+pscalc --- Determine entropy of a password
+
+=head1 SYNOPSIS
+
+$ pscalc [size_of_alphabet] [password_size]
+
+=head1 DESCRIPTION
+
+The entropy of a password is determined by:
+log(alphabet_size)/log(2)
+where alphabet_size is equal to the sum of the allowed characters
+(95 for lowercase, uppercase, digits, and the 33 special characters),
+and n is the length of the password.
+
+=head1 EXAMPLE
+
+Assume we are using the standard alphabet size (95), and we have a twelve character password. Using this tool:
+
+$ pscalc 95 12
+78.84
+
+Thus it would take
+2^79 = 6.04462909807315e+23
+attempts to try all possibilities. Consider the speed of computers and increase the numbers passed to pscalc, and you'll see that's not actually a great result.
+
+=head1 REFERENCE
+
+Thanks to Steve Gibson
+L<https://www.grc.com/
+for pointing this formula out on the Security Now podcast
+L<https://twit.tv/sn>.
+
+=cut
 
 die "$0 [size_of_alphabet] [password_size]\n" if (@ARGV < 2);
 my $alphabet_size = $ARGV[0]; # Size of alphabet
